@@ -23,5 +23,5 @@ jobs:
           destination-repository-name: 'pllee4-Experimental'
           commit-message: pushed from $GITHUB_REF
           user-email: tmp@tmp.com
-          target-branch: main # replace with current branch
+          target-branch: dev # replace with current branch
 
