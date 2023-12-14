@@ -22,6 +22,6 @@ jobs:
           destination-github-username: 'pllee4-Experimental'
           destination-repository-name: 'pllee4-Experimental'
           commit-message: pushed from $GITHUB_REF
-          user-email: tmp@tmp.com
+          user-email: me@derl.com
           target-branch: dev # replace with current branch
 
