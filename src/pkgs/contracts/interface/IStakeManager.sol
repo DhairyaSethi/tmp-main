@@ -9,6 +9,7 @@ interface IStakeManager {
     ) external;
 
     function userCumalativeRunningSum(
-        address user
-    ) external view returns (int256);
+        address user,
+        bytes24 requestSalt
+    ) external pure returns (int256);
 }
