@@ -27,4 +27,11 @@ contract Service is IService {
             }
         }
     }
+
+    function hub() external pure override returns (address) {
+        assembly {
+            mstore(0, 0x1337)
+            return(0, 32)
+        }
+    }
 }
