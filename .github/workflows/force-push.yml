@@ -19,8 +19,9 @@ jobs:
           SSH_DEPLOY_KEY: ${{ secrets.WORKFLOW_DEPLOY_KEY }}
         with:
           source-directory: tmp/interfaces
-          destination-github-username: 'pllee4-Experimental'
-          destination-repository-name: 'pllee4-Experimental'
+          target-directory: 'src/interfaces'
+          destination-github-username: 'DhairyaSethi'
+          destination-repository-name: 'tmp-interfaces'
           commit-message: pushed from $GITHUB_REF
           user-email: me@derl.com
           target-branch: dev # replace with current branch
