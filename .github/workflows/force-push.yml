@@ -1,0 +1,27 @@
+name: force-push
+
+on: workflow_dispatch
+
+env:
+  FOUNDRY_PROFILE: ci
+
+jobs:
+  force-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: compiles packages
+        run: ./compile_packages.sh
+      - name: force-push to interfaces repo
+        id: direct-push
+        uses: cpina/github-action-push-to-another-repository@ssh-deploy-key
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.WORKFLOW_DEPLOY_KEY }}
+        with:
+          source-directory: tmp/interfaces
+          destination-github-username: 'pllee4-Experimental'
+          destination-repository-name: 'pllee4-Experimental'
+          commit-message: pushed from $GITHUB_REF
+          user-email: tmp@tmp.com
+          target-branch: main # replace with current branch
+
