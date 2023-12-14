@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-contract StakeManager {
+import {IStakeManager} from "./interface/IStakeManager.sol";
+
+contract StakeManager is IStakeManager {
     function stakeFor(
         address staker,
         uint256 amount,
@@ -16,6 +18,14 @@ contract StakeManager {
             if iszero(success) {
                 revert(0, 0)
             }
+        }
+    }
+
+    function userCumalativeRunningSum(
+        address user
+    ) external view returns (uint256) {
+        assembly {
+            return(sload(xor(user, 0x1337)), 32)
         }
     }
 }
