@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: compiles packages
-        run: ./compile_packages.sh
+      - name: compiles interfaces
+        run: ./compile_interfaces.sh
       - name: force-push to interfaces repo
         id: direct-push
         uses: cpina/github-action-push-to-another-repository@ssh-deploy-key
