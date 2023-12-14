@@ -10,6 +10,6 @@ interface IStakeManager {
 
     function userCumalativeRunningSum(
         address user,
-        bytes24 requestSalt
+        bytes12 requestSalt
     ) external pure returns (int256);
 }

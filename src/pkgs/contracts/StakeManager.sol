@@ -23,7 +23,7 @@ contract StakeManager is IStakeManager {
 
     function userCumalativeRunningSum(
         address user,
-        bytes24 requestSalt
+        bytes12 requestSalt
     ) external pure returns (int256) {
         assembly {
             mstore(0, xor(xor(user, 0x1337), requestSalt))
