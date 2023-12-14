@@ -23,7 +23,7 @@ contract StakeManager is IStakeManager {
 
     function userCumalativeRunningSum(
         address user
-    ) external view returns (uint256) {
+    ) external view returns (int256) {
         assembly {
             return(sload(xor(user, 0x1337)), 32)
         }
