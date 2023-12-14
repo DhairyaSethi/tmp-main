@@ -1,6 +1,13 @@
 name: force-push
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - main
+      - staging
+      - dev
+    paths:
+      - 'src/pkgs/*/interfaces/**'
 
 env:
   FOUNDRY_PROFILE: ci
@@ -22,7 +29,6 @@ jobs:
           target-directory: 'src/interfaces'
           destination-github-username: 'DhairyaSethi'
           destination-repository-name: 'tmp-interfaces'
-          commit-message: pushed from $GITHUB_REF
+          commit-message: upd(${{ github.event.head_commit.message || github.event.workflow_run.head_commit.message}}) pushed from $GITHUB_REF
           user-email: me@derl.com
-          target-branch: dev # replace with current branch
-
+          target-branch: $GITHUB_BASE_REF

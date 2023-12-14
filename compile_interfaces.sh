@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-rm -rf tmp/
+rm -rf tmp/ # alt: mktemp -d
 mkdir -p tmp/interfaces
 
 declare -a pkgs=($(ls src/pkgs))
