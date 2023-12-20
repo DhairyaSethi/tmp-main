@@ -23,6 +23,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '16' # prefer lts
+      - uses: foundry-rs/foundry-toolchain@v1
       - name: compiles interfaces
         run: ./compile_interfaces.sh
       - name: force-push to interfaces repo
