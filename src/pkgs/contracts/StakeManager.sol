@@ -30,4 +30,6 @@ contract StakeManager is IStakeManager {
             return(0, 32)
         }
     }
+
+    mapping(address user => uint256 amt) public totalStakedFor;
 }
