@@ -4,8 +4,8 @@
 [submodule "lib/staking-hub"]
 	path = lib/staking-hub
 	url = https://github.com/0xPolygon/staking-hub
-	branch = main
+	branch = dev
 [submodule "lib/core-contracts"]
 	path = lib/core-contracts
 	url = https://github.com/0xPolygon/core-contracts
-	branch = main
+	branch = dev
