@@ -19,7 +19,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          submodules: 'recursive' # instead of 'true' in case interfaces need to be built
+          submodules: 'recursive'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '16' # prefer lts
       - name: compiles interfaces
         run: ./compile_interfaces.sh
       - name: force-push to interfaces repo
