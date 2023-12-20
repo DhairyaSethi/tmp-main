@@ -3,22 +3,25 @@
 rm -rf tmp/ # alt: mktemp -d
 mkdir -p tmp/interfaces
 
-declare -a pkgs=($(ls src/pkgs))
+copy_interfaces() {
+  local source_path=$1
+  local subpath=$2
 
-for pkg in "${pkgs[@]}"; do
-  cp -r src/pkgs/$pkg/interface/ tmp/interfaces/$pkg/
-done
+  declare -a items=("${@:3}")
+
+  for item in "${items[@]}"; do
+    cp -r "$source_path/$item/$subpath/" "tmp/interfaces/$item/"
+  done
+}
+
+# packages
+declare -a pkgs=($(ls src/pkgs))
+copy_interfaces "src/pkgs" "interface" "${pkgs[@]}"
 
 # libs which follow src/interface pattern
-declare -a libs=("staking-hub")
-
-for pkg in "${libs[@]}"; do
-  cp -r lib/$pkg/src/interface/ tmp/interfaces/$pkg/
-done
+declare -a src_libs=("staking-hub")
+copy_interfaces "lib" "src/interface" "${src_libs[@]}"
 
 # libs which follow contracts/interfaces pattern
-declare -a libs=("core-contracts")
-
-for pkg in "${libs[@]}"; do
-  cp -r lib/$pkg/contracts/interfaces/ tmp/interfaces/$pkg/
-done
+declare -a contracts_libs=("core-contracts")
+copy_interfaces "lib" "contracts/interfaces" "${contracts_libs[@]}"
