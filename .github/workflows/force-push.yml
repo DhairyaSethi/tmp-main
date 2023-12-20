@@ -18,6 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: 'recursive' # instead of 'true' in case interfaces need to be built
       - name: compiles interfaces
         run: ./compile_interfaces.sh
       - name: force-push to interfaces repo
@@ -30,6 +32,6 @@ jobs:
           target-directory: 'src/interfaces'
           destination-github-username: 'DhairyaSethi'
           destination-repository-name: 'tmp-interfaces'
-          commit-message: upd(${{ github.event.head_commit.message || github.event.workflow_run.head_commit.message}}) pushed from $GITHUB_REF
+          commit-message: upd(${{ github.event.head_commit.message || github.event.workflow_run.head_commit.message }}) pushed from $GITHUB_REF
           user-email: me@derl.com
           target-branch: ${{ github.head_ref || github.ref_name }}
