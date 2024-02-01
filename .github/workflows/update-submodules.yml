@@ -1,0 +1,28 @@
+name: Update Submodules
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+      - dev
+  schedule:
+    # Run this workflow daily at 00:00 UTC
+    - cron: "0 0 * * *"
+
+jobs:
+  update-submodules:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+
+      - name: Update Submodules
+        run: |
+          git submodule update --remote
+          git config --global user.name 'Daniel Gretzke'
+          git config --global user.email 'daniel@gretzke.de'
+          git commit -am "Update submodules"
+          git push
