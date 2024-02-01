@@ -1,4 +1,4 @@
 [submodule "src/repos/repo-test"]
 	path = src/repos/repo-test
 	url = https://github.com/gretzke/repo-test
-	branch = staging
+	branch = main
