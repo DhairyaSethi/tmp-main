@@ -21,7 +21,7 @@ jobs:
 
       - name: Update Submodules
         run: |
-          git submodule update --remote
+          git submodule update --init --remote
           git config --global user.name 'Daniel Gretzke'
           git config --global user.email 'daniel@gretzke.de'
           git commit -am "Update submodules"
