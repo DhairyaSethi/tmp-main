@@ -1,14 +1,3 @@
-[submodule "lib/forge-std"]
-	path = lib/forge-std
-	url = https://github.com/foundry-rs/forge-std
-[submodule "lib/staking-hub"]
-	path = lib/staking-hub
-	url = https://github.com/0xPolygon/staking-hub
-	branch = main
-[submodule "lib/core-contracts"]
-	path = lib/core-contracts
-	url = https://github.com/0xPolygon/core-contracts
-	branch = main
 [submodule "src/repos/repo-test"]
 	path = src/repos/repo-test
 	url = https://github.com/gretzke/repo-test
