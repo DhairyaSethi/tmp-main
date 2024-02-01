@@ -24,8 +24,20 @@ jobs:
       - name: Update Submodules
         run: |
           git submodule update --init --remote
+
+      - name: Configure Git
+        run: |
           git config --global user.name 'Daniel Gretzke'
           git config --global user.email 'daniel@gretzke.de'
+
+      - name: Check for Changes
+        id: git-check
+        run: |
+          echo "::set-output name=changes::$(git status --porcelain)"
+
+      - name: Commit and Push if Changes are Present
+        if: steps.git-check.outputs.changes != ''
+        run: |
           git add .
           git commit -m "Update submodules"
           git push
